@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="css/Employee.css">
+</head>
+<body>
+    <h1>Employee Registration</h1>
+    <form name="Employeeform" action="EmployeeLogin.html" method="get">
+        <div class="emp">
+            <label for="empName">Enter Your Name: </label>
+            <input type="text"  required name="empName">
+        </div>
+        <div class="emp">
+            <label for="empID">Enter Employe ID: </label>
+            <input type="text" required name="empID">
+        </div>
+        <div class="emp">
+            <label for="empDesigination">Enter your Desigination: </label>
+            <input type="text" required name="empDesigination">
+        </div>
+        <div class="emp">
+            <label for="empDOB">Choose Your Date Of Birth: </label>
+            <input type="date" required name="empDOB">
+        </div>
+        <div class="emp">
+            <label for="empSalary">Enter your Salary: </label>
+            <input type="text" required name="empSalary">
+
+        </div>
+        <div class="emp">
+            <button type="submit" onclick="window.open('file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/employee1.html','_blank')">submit</button>
+           
+        </div>
+    </form>
+
+    <p id="pid"></p>
+
+</body>
+<script src="javascript/Employee.js"></script>
+</html>
