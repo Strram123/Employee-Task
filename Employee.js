@@ -24,36 +24,4 @@ const submit=(e)=>{
                  JSON.parse(localStorage.getItem("emp"));
                  window.open('file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/employee1.html','_blank')   
 };
-function test2(e){
-e.preventDefault();
-if(empNameEl!=" " && empNameEl!=Number)
-{
-    if(empIDEl!=" ")
-    {
-        if(empDesiginationEl!=" ")
-        {
-            if(empDOBEl!=" ")
-            {
-                if(empSalaryEl!=" ")
-                {
-
-                    console.log("Submitted!!");
-                   
-                }
-                else
-                alert("please fill")
-            }
-            else
-                alert("please fill")
-        }
-        else
-                alert("please fill")
-    }
-    else
-                alert("please fill")
-}
-else
-alert("please fill")
-}
-
 formEl.addEventListener("submit",submit);
