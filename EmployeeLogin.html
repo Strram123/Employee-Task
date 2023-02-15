@@ -62,35 +62,24 @@
         console.log(formEl);
         const idEl=formEl.elements.EmpId;
         const passwordEl=formEl.elements.empPassword;
-        var userid;
-        var userpassword;
         const submit=(e)=>{
-            e.preventDefault();
-            
-            const loginid =idEl.value
-            const loginPass = passwordEl.value
-    if (localStorage.getItem('emp')) {
-
-        console.log(loginid);
-        console.log(loginPass);
-
-        const login = JSON.parse(localStorage.getItem('emp'))
-
-        if (loginid == login.empid && loginPass == login.emppassword) {
-            alert('Login successful')
-            open('file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/employ.html','_blank')
-        } else {
-            alert('Wrong credentials')
-        }
-    } else {
-        alert('Not a registered user')
-    }
-           
-            
-
+            e.preventDefault();         
+             let id=idEl.value;
+             let password=passwordEl.value;
          
-        
-        }
+             console.log(id,password);
+             let login=JSON.parse(window.localStorage.getItem('Employee'));
+    
+             console.log(login);
+
+       
+             if (id == login.empid && password == login.emppassword) {
+                     alert('Login successful')
+           
+             } else {
+                     alert('Wrong credentials')
+             }
+    }
        
         formEl.addEventListener("submit",submit);
 </script>
