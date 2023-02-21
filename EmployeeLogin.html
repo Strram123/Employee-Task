@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body{
+            background-color:  beige;
+        }
+          
+        h1{
+            color: crimson;
+            text-align: center;
+        }
+         
+        form{
+            margin-top: 100px;
+        }
+        
+        form .emp{
+            padding: 20px;
+           margin-left: 430px;
+           font-size: 18px; 
+          
+         
+        }
+        form .emp input{
+            width: 250px;
+            height: 30px;
+            text-align: center;
+        }
+        form .emp button{
+            width: 100px;
+            height: 25px;
+            background-color: violet;
+            margin-left: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Employee Login</h1>
+    <form name="empLogin">
+        <div class="emp">
+            <label for="EmpId">Enter Your Employee Id :</label>
+            <input type="text" name="EmpId" required>
+        </div>
+        <div class="emp">
+            <label for="empPassword">Enter Your Password :</label>
+            <input type="password" name="empPassword" required>
+        </div>
+        <div  class="emp">
+            <button  type="submit">login</button></br></br>
+          
+        <div class="content1">
+        <button  type="reset" onclick="clearfn()">Cancel</button>
+      
+        </div>
+
+    </form>
+</body>
+<script>
+   
+       
+var keys=[];
+var idPswd=[];
+var formEl=document.forms.empLogin;
+ validate=(event)=>{
+  //  event.preventDefault();
+    event.preventDefault();
+ 
+  var uname=formEl.elements.EmpId.value;
+  var pswd=formEl.elements.empPassword.value;
+
+if(uname===""&&pswd==="")
+{
+    alert("fail")
+}
+else
+{
+ verify={
+        id:uname,
+        pswd:pswd
+      }
+      keyVal=JSON.stringify(verify);
+      keys.push(keyVal);
+      console.log(keys);
+      var idP=localStorage.getItem('Employee');
+      idPswd.push(idP);
+      console.log(idPswd);
+  
+      for(let i=idPswd.length-1;i>=0;i--)
+      {
+      let key1=JSON.parse(keys[i]);
+      let key2=JSON.parse(idPswd[i]);
+      if(key1.id==key2.id && key1.pswd==key2.password)
+      alert("success");
+    
+      else
+      alert('fail incorect')
+      }
+    
+}
+ }
+formEl.addEventListener("submit",validate);
+
+
+
+clearfn=()=>{
+ formEl.elements.EmpId.value="";
+ formEl.elements.empPassword.value="";
+
+}
+
+
+    
+      
+       
+</script>
+</html>
