@@ -21,44 +21,52 @@ var empSalaryEl=formEl.elements.empSalary.value=" ";
                 var empSalaryEl=formEl.elements.empSalary.value;
                 var numbers = /^[0-9]+$/;
                 var letters = /^[A-Za-z]+$/;
-                var value=0;
+                
                 var retrievedUser;
-       if(empSalaryEl.match(numbers)&&empNameEl.match(letters)&&empDesiginationEl.match(letters)&&empIDEl.match(numbers))
-       {
+
+
+        if(empSalaryEl.match(numbers)&&empNameEl.match(letters)&&empDesiginationEl.match(letters)&&empIDEl.match(numbers))
+        {
          var EmpDetails={
                 id:empIDEl,
                 password:empIDEl+1
          } 
-         if(value==0){
+        if(localStorage.getItem("Employee")==null){
                employeArr.push(EmpDetails);
-               console.log(employeArr);
-                localStorage.setItem("Employee",JSON.stringify(employeArr));   
-                 alert("javascript")   
-                 value++;      
+                console.log(employeArr);
+                let show=localStorage.setItem("Employee",JSON.stringify(employeArr));   
+                 alert(EmpDetails.id)
+                 alert(EmpDetails.password)   
+                 window.open("file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/EmployeeLogin.html");      
          }
-        
-       
-       else{
-        
-        localStorage.setItem("Employee",JSON.stringify(employeArr));
-        var idP=JSON.parse(localStorage.getItem('Employee'));
-        retrievedUser = idP.filter((user)=>{ return user.id == EmpDetails.id})[0];
-        
-         if(retrievedUser.id == EmpDetails.id)
-         {
-         alert('invalid');
-         }
-         else
-          employeArr.push(EmpDetails);
-        console.log(employeArr);
-         window.open("file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/EmployeeLogin.html");
-        }
- } 
 
         else{
-                //alert("enter Valid Input")
+        var idP=JSON.parse(localStorage.getItem('Employee'));
+        retrievedUser = idP.filter((user)=>{ return user.id == EmpDetails.id})[0];
+
+        if(retrievedUser!=null)
+         {
+         if(retrievedUser.id == EmpDetails.id)
+         {
+         alert('Already Existed');
+         }}
+
+
+         else
+        {
+        employeArr.push(EmpDetails);
+        console.log(employeArr);
+       let show=localStorage.setItem("Employee",JSON.stringify(employeArr));
+        alert(EmpDetails.id);
+        alert(EmpDetails.password)
+         window.open("file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/EmployeeLogin.html");
+        }}
+      } 
+
+        else{
+                alert("enter Valid Input")
         }
-    
+} 
 
 formEl.addEventListener("submit",submitfn);
 
