@@ -68,13 +68,15 @@ var keys=[];
 var idPswd=[];
 var formEl=document.forms.empLogin;
  validate=(event)=>{
-  //  event.preventDefault();
+  
     event.preventDefault();
  
   var uname=formEl.elements.EmpId.value;
   var pswd=formEl.elements.empPassword.value;
 
-if(uname===""&&pswd==="")
+
+
+if(uname==""&&pswd=="")
 {
     alert("fail")
 }
@@ -84,26 +86,28 @@ else
         id:uname,
         pswd:pswd
       }
-      keyVal=JSON.stringify(verify);
-      keys.push(keyVal);
-      console.log(keys);
-      var idP=localStorage.getItem('Employee');
-      idPswd.push(idP);
-      console.log(idPswd);
-  
-      for(let i=idPswd.length-1;i>=0;i--)
-      {
-      let key1=JSON.parse(keys[i]);
-      let key2=JSON.parse(idPswd[i]);
-      if(key1.id==key2.id && key1.pswd==key2.password)
-      alert("success");
     
+      keys.push(verify);    
+     // console.log(keys);
+      var idP=JSON.parse(localStorage.getItem('Employee'));
+      var retrievedUser,retrivedPassWrd;
+      for(let i=idP.length-1;i>=0;i--)
+      {
+       retrievedUser = idP.filter((user)=>{ return user.id == verify.id})[i];
+       retrivedPassWrd=idP.filter((xy)=>{return xy.password == verify.pswd})[i];
+        }
+         idPswd.push(idP)
+      if(retrievedUser && retrivedPassWrd)
+      {
+      alert("success");
+      window.open("file:///C:/Users/ELCOT/Desktop/HTMLPROGRAMS/employeProfile.html");
+      }
       else
       alert('fail incorect')
-      }
-    
+    }
+        
 }
- }
+ 
 formEl.addEventListener("submit",validate);
 
 
@@ -111,12 +115,6 @@ formEl.addEventListener("submit",validate);
 clearfn=()=>{
  formEl.elements.EmpId.value="";
  formEl.elements.empPassword.value="";
-
-}
-
-
-    
-      
-       
+}       
 </script>
 </html>
